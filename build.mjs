@@ -14,7 +14,7 @@ const logo = 'data:image/png;base64,' + readFileSync(new URL('propnex-logo.png',
 
 const src = read('ec-eligibility.html').replace('src="propnex-logo.png"', `src="${logo}"`);
 const [head, body] = src.split(/<\/style>\n/);
-const lock = `<script>(function(){var b=document.getElementById('lockBtn');if(!b)return;b.hidden=false;b.addEventListener('click',function(){try{Object.keys(localStorage).filter(function(k){return k.indexOf('ecChecker.key.')===0}).forEach(function(k){localStorage.removeItem(k)})}catch(e){}location.reload()})})();</script>`;
+const lock = `<script>(function(){var b=document.getElementById('lockBtn');if(!b)return;b.hidden=false;b.addEventListener('click',function(){location.reload()})})();</script>`;
 const app = `<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n<meta name="robots" content="noindex, nofollow">\n<style>[hidden]{display:none!important}body{margin:0}</style>\n${head}</style>\n</head>\n<body>\n${body}${lock}\n</body>\n</html>\n`;
 
 const iter = 600000;
